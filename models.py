@@ -3,6 +3,7 @@ import exceptions
 import settings
 from datetime import datetime
 
+
 class Enemy:
     level = None
     lives = None
@@ -12,11 +13,9 @@ class Enemy:
         self.level = level
         self.lives = level
 
-    #@staticmethod
     def select_attack(self):
         random.seed(datetime.now())
         self.actor = random.randint(1, 3)
-
 
     def decrease_lives(self):
         if self.lives > 1:
@@ -34,7 +33,6 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.lives = settings.LIVES
-
 
     @staticmethod
     def fight(attack_side, defense_side):
@@ -60,7 +58,7 @@ class Player:
         elif res == 1:
             self.score += 1
             enemy.decrease_lives()
-            return "You attacked successfully!"
+            return "You attacked successfully! Score is {}".format(self.score)
         elif res == -1:
             return "You missed!"
 
@@ -73,8 +71,3 @@ class Player:
             return "You were hit!"
         elif res == -1:
             return "You evaded!"
-
-
-
-
-
