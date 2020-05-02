@@ -35,7 +35,7 @@ def start(name):
             print("You were hit!")
             print('{} dies! Score is {}.'.format(name, player.score))
             err.add_score(name, player.score)
-            raise exceptions.GameOver
+            break
 
 
 def show_help():
