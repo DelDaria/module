@@ -29,12 +29,12 @@ def start(name):
             player.score += 5
             print("You attacked successfully! Score is {}".format(player.score))
             print("{} wins! Level up to {}.".format(name, level))
-            print('______________________________________________')
+            print('_'*46)
             enemy = models.Enemy(level)
-        except exceptions.GameOver:
+        except exceptions.GameOver as err:
             print("You were hit!")
             print('{} dies! Score is {}.'.format(name, player.score))
-            exceptions.GameOver.add_score(name, player.score)
+            err.add_score(name, player.score)
             raise exceptions.GameOver
 
 
